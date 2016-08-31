@@ -1,4 +1,4 @@
-package com.mm.test
+package com.mmtest
 
 /**
   * 31/08/2016
