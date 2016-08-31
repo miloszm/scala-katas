@@ -32,4 +32,8 @@ class ParenthesesGeneratorTest extends FlatSpec with Matchers {
     ParenthesesGenerator.insertPair("(())") should contain theSameElementsAs List("((()))", "(()())", "(())()")
   }
 
+  "insert pair to a commbination" should "produce new correct list combinations with the new pair for ()()" in {
+    ParenthesesGenerator.insertPair("()()") should contain theSameElementsAs List("(())()", "()(())", "()()()")
+  }
+
 }

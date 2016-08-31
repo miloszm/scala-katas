@@ -21,12 +21,12 @@ object ParenthesesGenerator {
     combinations.flatten.distinct
   }
 
-  def insertPair(c:String):List[String] = {
+  def insertPair(c:String):Set[String] = {
     val re = """(\(+|\))""".r
     val m = re.findAllMatchIn(c)
     (for (g <- m) yield {
       c.substring(0, g.start) + g.group(0) + "()" + c.substring(g.end)
-    }).toList
+    }).toSet
   }
 
 }
