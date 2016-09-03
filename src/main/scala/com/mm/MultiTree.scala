@@ -18,6 +18,27 @@ object MultiTree {
 
   def isArrow(c:Char) = c == '^'
 
+
+  /**
+    * for example, for
+    *
+    *  a  b  c  ^  ^  d  ^  e  f  ^  g  ^  ^  ^
+    * -1 -2 -3 -2 -1 -2 -1 -2 -3 -2 -3 -2 -1  0
+    *
+    * we need the following splits at level -2
+    *
+    *  b  c  ^  ^
+    * -2 -3 -2 -1
+    *
+    *  d  ^
+    * -2 -1
+    *
+    *  e  f  ^  g  ^  ^  ^
+    * -2 -3 -2 -3 -2 -1  0
+    *
+    * each split chunk represents one subtree
+    *
+    */
   def splitAt(ss:List[(Char,Int)], level:Int):List[List[(Char,Int)]] = {
     val indices = for {
       i <- 0 until ss.size
