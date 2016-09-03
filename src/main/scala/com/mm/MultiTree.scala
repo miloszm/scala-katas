@@ -8,7 +8,10 @@ object MultiTree {
     def arrowDiscriminator(c:Char):Int = if (c == '^') 1 else -1
     def go(s:String, acc:List[(Char,Int)],level:Int):List[(Char,Int)] = s match {
       case "" => acc
-      case s => go(s.substring(1), acc ::: List((s.charAt(0),level + arrowDiscriminator(s.charAt(0)))), level + arrowDiscriminator(s.charAt(0)))
+      case s => {
+        val newLevel = level + arrowDiscriminator(s.charAt(0))
+        go(s.substring(1), acc ::: List((s.charAt(0),newLevel)), newLevel)
+      }
     }
     go(s, List(), 0)
   }
@@ -28,21 +31,19 @@ object MultiTree {
     slices.toList
   }
 
-  def processChunk(ss:List[(Char,Int)], level:Int):Node = Node(ss.head._1, processRestOfChunk(ss.drop(1), level))
-
   def processRestOfChunk(ss:List[(Char,Int)], level:Int): List[Node] = {
     if (ss.forall(e => isArrow(e._1))) Nil
     else {
       val chunks = splitAt(ss, level-1)
-      val nodes = for {
+      for {
         chunk <- chunks
-      } yield processChunk(chunk, level-1)
-      nodes
+      } yield Node(chunk.head._1, processRestOfChunk(chunk.drop(1), level-1))
     }
   }
 
   def stringToTree(s:String): Node = {
-    processChunk(stringZipper(s),-1)
+    val chunk = stringZipper(s)
+    Node(chunk.head._1, processRestOfChunk(chunk.drop(1),-1))
   }
 
 }
