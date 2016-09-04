@@ -1,28 +1,29 @@
 package com.ce
 
+import com.ce.FizzBuzzStep3.OutputType
 import org.scalatest.{FlatSpec, Matchers}
 
 
 class FizzBuzzStep3Test extends FlatSpec with Matchers {
 
   "FizzBuzz generator for a given number" should "produce 'fizz' for multiples of 3" in {
-    FizzBuzzStep3.generate(9)._1 shouldBe "fizz"
+    FizzBuzzStep3.generate(9) shouldBe ("fizz", OutputType.fizz)
   }
 
   "FizzBuzz generator for a given number" should "produce 'buzz' for multiples of 5" in {
-    FizzBuzzStep3.generate(10)._1 shouldBe "buzz"
+    FizzBuzzStep3.generate(10) shouldBe ("buzz", OutputType.buzz)
   }
 
   "FizzBuzz generator for a given number" should "produce 'fizzbuzz' for if it is a multple of 15" in {
-    FizzBuzzStep3.generate(15)._1 shouldBe "fizzbuzz"
+    FizzBuzzStep3.generate(15) shouldBe ("fizzbuzz", OutputType.fizzbuzz)
   }
 
   "FizzBuzz generator for a given number" should "produce string representation of a number if it is neither multiple of 3 nor 5" in {
-    FizzBuzzStep3.generate(14)._1 shouldBe "14"
+    FizzBuzzStep3.generate(14) shouldBe ("14", OutputType.integer)
   }
 
   "FizzBuzz generator for a given number" should "produce string 'lucky' if it contains a three" in {
-    FizzBuzzStep3.generate(13)._1 shouldBe "lucky"
+    FizzBuzzStep3.generate(13) shouldBe ("lucky", OutputType.lucky)
   }
 
   "FizzBuzz generator for a range 1 to 20" should "produce valid a list of valid outputs for each number in range" in {
