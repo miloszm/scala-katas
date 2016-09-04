@@ -5,7 +5,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class FizzBuzzStep2Test extends FlatSpec with Matchers {
 
-  "FizzBuzz generator for a given number" should "produce 'fizz' for multiples of 3" in {
+  "FizzBuzz generator for a given number" should  "produce 'fizz' for multiples of 3" in {
     FizzBuzzStep2.generate(9) shouldBe "fizz"
   }
 
@@ -17,11 +17,11 @@ class FizzBuzzStep2Test extends FlatSpec with Matchers {
     FizzBuzzStep2.generate(15) shouldBe "fizzbuzz"
   }
 
-  "FizzBuzz generator for a given number" should "produce string representation of a number if it is neither multiple of 3 nor 5" in {
+  "FizzBuzz generator for a given number" should "produce string representation of a number if it is not a multiple of 3 or 5 or both" in {
     FizzBuzzStep2.generate(14) shouldBe "14"
   }
 
-  "FizzBuzz generator for a given number" should "produce string 'lucky' if it contains a three" in {
+  "FizzBuzz generator for a given number" should "produce 'lucky' if it contains a three" in {
     FizzBuzzStep2.generate(13) shouldBe "lucky"
   }
 
