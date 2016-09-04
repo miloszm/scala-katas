@@ -1,6 +1,6 @@
 package com.ce
 
-object FizzBuzzStep2 {
+object FizzBuzzStep3 {
 
   def generate(i: Int):String = {
     val fizzBuzzList= List("fizz").filter(_ => i % 3 == 0) ::: List("buzz").filter(_ => i % 5 == 0)
